@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/notification_page.dart';
 import 'package:hire_harmony/views/widgets/best_worker.dart';
 import 'package:hire_harmony/views/widgets/category_widget.dart';
 import 'package:hire_harmony/views/widgets/custom_carousel_indicator.dart';
@@ -17,7 +18,7 @@ class EmpHomePage extends StatelessWidget {
             preferredSize: const Size.fromHeight(150),
             child: Container(
               color: AppColors.orange,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -42,14 +43,24 @@ class EmpHomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Icon(
-                        Icons.notifications_active_outlined,
-                        color: Colors.white,
-                        size: 25,
+                      TextButton(
+                        child: const Icon(
+                          Icons.notifications_active_outlined,
+                          color: Colors.white,
+                          size: 25,
+                          
+                        ),
+                        onPressed:(){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => NotificationPage())
+                            );
+
+                        } ,
                       )
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(

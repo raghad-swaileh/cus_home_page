@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hire_harmony/main.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/pages/DeleteAccountScreeen/account_deletion.dart';
 import 'package:hire_harmony/views/pages/edit_profile_page.dart';
 import 'package:hire_harmony/views/pages/profile_info.dart';
+class buildMenuContainer extends StatefulWidget {
+  const buildMenuContainer({super.key});
 
-Widget buildMenuContainer(BuildContext context) {
-  return Container(
+  @override
+  State<buildMenuContainer> createState() => _buildMenuContainerState();
+}
+
+class _buildMenuContainerState extends State<buildMenuContainer> {
+    bool isDarkMode = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
     margin: const EdgeInsets.symmetric(horizontal: 20),
     padding: const EdgeInsets.symmetric(vertical: 10),
     decoration: BoxDecoration(
@@ -20,10 +31,45 @@ Widget buildMenuContainer(BuildContext context) {
       ],
     ),
     child: Column(
-      children: _buildMenuItems(context), // Pass the context here
+      children: [
+        Column(
+        children: _buildMenuItems(context),
+        ),
+         ListTile(
+                leading: Icon(  Icons.brightness_6,color:AppColors.orange,),
+                 title: Text('Theme') ,
+                  onTap: () {
+                setState(() {
+                      isDarkMode = !isDarkMode;
+                      // Change the theme
+                     /* final themeMode =
+                          isDarkMode ? ThemeMode.dark : ThemeMode.light;
+                      MyApp.of(context).setThemeMode(themeMode);*/
+                    });
+                  },
+                  trailing: Switch(
+                    value: isDarkMode,
+                    onChanged: (value) {
+                      setState(() {
+                        isDarkMode = value;
+                       /* final themeMode =
+                            isDarkMode ? ThemeMode.dark : ThemeMode.light;
+                        MyApp.of(context).setThemeMode(themeMode);*/
+                      });
+                    },
+                  
+            ),
+         ),
+      ],
+      
+          
+    
     ),
+  
   );
+  }
 }
+
 
 List<Widget> _buildMenuItems(BuildContext context) {
   final menuItems = [
@@ -31,7 +77,6 @@ List<Widget> _buildMenuItems(BuildContext context) {
     {'icon': Icons.bookmark, 'text': 'Bookmarked', 'route': null}, // Add route here later
     {'icon': Icons.history, 'text': 'Previous Trips', 'route': null},
     {'icon': Icons.settings, 'text': 'Settings', 'route': null},
-    {'icon': Icons.color_lens, 'text': 'Theme', 'route': null},
     {'icon': Icons.info, 'text': 'Delete Account', 'route': const AccountDeletionScreen()},
 
   ];

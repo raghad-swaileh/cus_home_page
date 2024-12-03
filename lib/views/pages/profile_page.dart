@@ -11,10 +11,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final TextEditingController _nameController = TextEditingController(text: "Haneen");
-  final TextEditingController _emailController = TextEditingController(text: "haneen@gmail.com");
+  final TextEditingController _nameController =
+      TextEditingController(text: "Haneen");
+  final TextEditingController _emailController =
+      TextEditingController(text: "haneen@gmail.com");
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,9 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           IconButton(
             icon: Icon(Icons.edit, color: AppColors.orange),
-            onPressed: (){_showEditProfileDialog(context);},
+            onPressed: () {
+              _showEditProfileDialog(context);
+            },
           ),
         ],
       ),
@@ -41,7 +45,8 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 20),
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/images/teacher.jpg'), // Replace with your image
+              backgroundImage: AssetImage(
+                  'assets/images/teacher.jpg'), // Replace with your image
             ),
             const SizedBox(height: 10),
             Text(
@@ -57,11 +62,11 @@ class _ProfilePageState extends State<ProfilePage> {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade300,
+                    color: AppColors.grey,
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -70,24 +75,26 @@ class _ProfilePageState extends State<ProfilePage> {
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  StatItem(label: 'Orders', value: '20'),
-                  StatItem(label: 'Pending \n Requests', value: '5'),
-                  StatItem(label: 'Support \n Tickets', value: '2'),
+                  StatItem(label: ' Orders \n Complete', value: '20'),
+                  StatItem(label: ' Support \n Tickets', value: '2'),
+                  StatItem(label: ' Pending \n Requests', value: '5'),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            buildMenuContainer(context),
+            const buildMenuContainer(),
           ],
         ),
       ),
     );
   }
+
   void _showEditProfileDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: AppColors.white,
           title: const Text("Edit Profile"),
           content: Form(
             key: _formKey,
@@ -109,7 +116,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   controller: _emailController,
                   decoration: const InputDecoration(labelText: "Email"),
                   validator: (value) {
-                    if (value == null || value.isEmpty || !value.contains("@")) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !value.contains("@")) {
                       return "Enter a valid email";
                     }
                     return null;
@@ -139,7 +148,4 @@ class _ProfilePageState extends State<ProfilePage> {
       },
     );
   }
-
 }
-
-

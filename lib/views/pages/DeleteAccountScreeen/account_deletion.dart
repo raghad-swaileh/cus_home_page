@@ -76,7 +76,7 @@ class _AccountDeletionBodyState extends State<AccountDeletionBody> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Card(
-            color: AppColors.orangelight,
+            color: AppColors.white,
             shadowColor: AppColors.grey,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
