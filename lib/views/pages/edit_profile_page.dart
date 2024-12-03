@@ -135,7 +135,7 @@ class EditProfilePage extends StatelessWidget {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: AppColors.navy, width: 1.5),
+              borderSide: BorderSide.none,
             ),
             filled: true,
             fillColor: AppColors.grey3,

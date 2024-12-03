@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/DeleteAccountScreeen/account_deletion.dart';
 import 'package:hire_harmony/views/pages/edit_profile_page.dart';
 import 'package:hire_harmony/views/pages/profile_info.dart';
 
@@ -30,8 +31,9 @@ List<Widget> _buildMenuItems(BuildContext context) {
     {'icon': Icons.bookmark, 'text': 'Bookmarked', 'route': null}, // Add route here later
     {'icon': Icons.history, 'text': 'Previous Trips', 'route': null},
     {'icon': Icons.settings, 'text': 'Settings', 'route': null},
-    {'icon': Icons.info, 'text': 'Version', 'route': null},
     {'icon': Icons.color_lens, 'text': 'Theme', 'route': null},
+    {'icon': Icons.info, 'text': 'Delete Account', 'route': const AccountDeletionScreen()},
+
   ];
 
   return menuItems
