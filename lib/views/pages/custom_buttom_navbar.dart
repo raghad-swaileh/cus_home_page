@@ -17,6 +17,7 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
   Widget build(BuildContext context) {
     final size=MediaQuery.of(context).size;
     return Scaffold(
+      /*
       drawer: const Drawer(
         child: Center(
            child: Text('inside the drawer haneen daoud  '),
@@ -50,7 +51,7 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
           ],
         ),
       ),
-
+*/
       bottomNavigationBar: size.width>=800
       ? null
       :NavigationBar(
