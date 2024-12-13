@@ -147,6 +147,11 @@ class _NotificationPageState extends State<NotificationPage> {
               itemBuilder: (context, index) {
                 final notification = displayedNotifications[index];
                 return ListTile(
+                
+                  shape: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.grey, width: 1),
+                    borderRadius: BorderRadius.circular(15)
+                  ),
                   leading: CircleAvatar(
                     backgroundImage: AssetImage(notification["image"]!),
                   ),
