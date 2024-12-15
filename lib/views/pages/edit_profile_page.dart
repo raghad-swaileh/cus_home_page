@@ -1,12 +1,72 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
   @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+    final String documentId = 'tAkdNFqswzMaxOPRC239';
+TextEditingController nameController= TextEditingController();
+    TextEditingController locationController = TextEditingController();
+    TextEditingController mobileController = TextEditingController();
+        TextEditingController emailController = TextEditingController();
+
+Future<void> fetchData() async {
+    try {
+      DocumentSnapshot doc = await FirebaseFirestore.instance
+          .collection('client')
+          .doc(documentId)
+          .get();
+
+      if (doc.exists) {
+        setState(() {
+          nameController.text = doc['name'] ?? '';
+          locationController.text = doc['location'] ?? '';
+          mobileController.text = doc['phone_number']?.toString() ?? '';
+        });
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('فشل تحميل البيانات')),
+      );
+    }
+  }
+  Future<void> updateData() async {
+    try {
+      await FirebaseFirestore.instance.collection('client').doc(documentId).set({
+        'name': nameController.text,
+        'location': locationController.text,
+        'phone_number': mobileController.text,
+      }, SetOptions(merge: true));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('تم تحديث البيانات بنجاح')),
+      );
+
+      Navigator.pop(context);
+    } catch (e) {
+      print('Error updating data: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('فشل تحديث البيانات')),
+      );
+    }
+  }
+@override
+  void initState() {
+    super.initState();
+    fetchData(); // تحميل البيانات عند فتح الصفحة
+  }
+  
+  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -31,9 +91,7 @@ class EditProfilePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () {
-              // Save action
-            },
+            onPressed: updateData,
             child: Text(
               'Done',
               style: GoogleFonts.montserratAlternates(
@@ -77,6 +135,7 @@ class EditProfilePage extends StatelessWidget {
             ),
             Text(
               'haneendaoud@gmail.com',
+
               style: GoogleFonts.montserratAlternates(
                 textStyle: TextStyle(
                   fontSize: 14,
@@ -90,13 +149,27 @@ class EditProfilePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  buildTextField(label: 'First Name', hintText: 'First Name'),
+                  buildTextField(
+                      label: 'First Name',
+                      hintText: 'First Name',
+                      controller: nameController),
                   const SizedBox(height: 10),
-                  buildTextField(label: 'Last Name', hintText: 'Last Name'),
+                   buildTextField(
+                      label: 'Email',
+                      hintText: 'Email',
+                      controller: emailController),
+                    const SizedBox(height: 10),
+
+                  
+                  buildTextField(
+                      label: 'Location',
+                      hintText: 'Location',
+                      controller: locationController),
                   const SizedBox(height: 10),
-                  buildTextField(label: 'Location', hintText: 'Location'),
-                  const SizedBox(height: 10),
-                  buildTextField(label: 'Mobile Number', hintText: 'Mobile'),
+                  buildTextField(
+                      label: 'Mobile Number',
+                      hintText: 'Mobile',
+                      controller: mobileController),
                 ],
               ),
             ),
@@ -106,12 +179,15 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 
-  Widget buildTextField({required String label, required String hintText}) {
+  Widget buildTextField({
+    required String label,
+    required String hintText,
+    required TextEditingController controller,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-       const SizedBox(height: 10),
-
+        const SizedBox(height: 10),
         Text(
           label,
           style: GoogleFonts.montserratAlternates(
@@ -123,7 +199,8 @@ class EditProfilePage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        TextField(
+        TextFormField(
+          controller: controller,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: GoogleFonts.montserratAlternates(

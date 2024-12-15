@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/pages/emp_home_page.dart';
 import 'package:hire_harmony/views/pages/favorites_page.dart';
+import 'package:hire_harmony/views/pages/messages_page.dart';
 import 'package:hire_harmony/views/pages/profile_page.dart';
 class CustomButtomNavbar extends StatefulWidget {
   const CustomButtomNavbar({super.key});
@@ -74,6 +75,11 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
             label: 'Faavorite',
           ),
           NavigationDestination(
+            selectedIcon: Icon(Icons.message),
+            icon: Icon(Icons.message_outlined),
+            label: 'Messages',
+          ),
+          NavigationDestination(
             selectedIcon: Icon(Icons.person),
             icon: Icon(Icons.person_2_outlined),
             label: 'Profile',
@@ -83,6 +89,7 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
       body: const <Widget>[
         EmpHomePage(),
         FavoritesPage(),
+        MessagesPage(),
         ProfilePage(),
       ][currentPageIndex],
     );

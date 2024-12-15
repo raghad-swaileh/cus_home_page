@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/pages/notification_page.dart';
+import 'package:hire_harmony/views/pages/search_and_filter.dart';
 import 'package:hire_harmony/views/widgets/best_worker.dart';
 import 'package:hire_harmony/views/widgets/category_widget.dart';
 import 'package:hire_harmony/views/widgets/custom_carousel_indicator.dart';
@@ -44,16 +45,17 @@ class EmpHomePage extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        child: const Icon(
+                        child:  Icon(
                           Icons.notifications_active_outlined,
-                          color: Colors.white,
+                          color: AppColors.white,
                           size: 25,
                           
                         ),
                         onPressed:(){
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => NotificationPage())
+                            MaterialPageRoute(builder: (context) =>  NotificationPage()),
+                            
                             );
 
                         } ,
@@ -78,9 +80,20 @@ class EmpHomePage extends StatelessWidget {
                           ),
                         ),
                         border: InputBorder.none,
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: AppColors.grey,
+                        
+                        prefixIcon: TextButton(
+                          onPressed: () { 
+                          
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchAndFilter())
+                            );
+
+                           },
+                          child: Icon(
+                            Icons.search,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),

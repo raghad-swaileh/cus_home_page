@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hire_harmony/main.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/pages/DeleteAccountScreeen/account_deletion.dart';
-import 'package:hire_harmony/views/pages/edit_profile_page.dart';
+import 'package:hire_harmony/views/pages/manage_location_page.dart';
 import 'package:hire_harmony/views/pages/profile_info.dart';
+// ignore: camel_case_types
 class buildMenuContainer extends StatefulWidget {
   const buildMenuContainer({super.key});
 
@@ -11,6 +11,7 @@ class buildMenuContainer extends StatefulWidget {
   State<buildMenuContainer> createState() => _buildMenuContainerState();
 }
 
+// ignore: camel_case_types
 class _buildMenuContainerState extends State<buildMenuContainer> {
     bool isDarkMode = false;
 
@@ -37,7 +38,7 @@ class _buildMenuContainerState extends State<buildMenuContainer> {
         ),
          ListTile(
                 leading: Icon(  Icons.brightness_6,color:AppColors.orange,),
-                 title: Text('Theme') ,
+                 title: const Text('Theme') ,
                   onTap: () {
                 setState(() {
                       isDarkMode = !isDarkMode;
@@ -74,10 +75,12 @@ class _buildMenuContainerState extends State<buildMenuContainer> {
 List<Widget> _buildMenuItems(BuildContext context) {
   final menuItems = [
     {'icon': Icons.person, 'text': 'Profile', 'route': const ProfileInfo()},
-    {'icon': Icons.bookmark, 'text': 'Bookmarked', 'route': null}, // Add route here later
+    {'icon': Icons.location_city, 'text': 'Manage address', 'route': const ManageLocationPage()},
+
     {'icon': Icons.history, 'text': 'Previous Trips', 'route': null},
     {'icon': Icons.settings, 'text': 'Settings', 'route': null},
     {'icon': Icons.info, 'text': 'Delete Account', 'route': const AccountDeletionScreen()},
+    {'icon': Icons.logout, 'text': 'Logout', 'route': null},
 
   ];
 

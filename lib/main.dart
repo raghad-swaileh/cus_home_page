@@ -1,13 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/utils/app_theme.dart';
 import 'package:hire_harmony/views/pages/custom_buttom_navbar.dart';
-import 'package:hire_harmony/views/pages/emp_home_page.dart';
-import 'package:hire_harmony/views/pages/navbar.dart';
 
-void main()  {
- 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); 
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,12 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),
-        useMaterial3: true,
-        primaryColor: AppColors.orange,
-      ),
-
+      theme: AppTheme.lightTheme(),
+      darkTheme: AppTheme.darkTheme(),
 
       home:const  CustomButtomNavbar(),
       /*const EmpSignUp(stepText: "Step 1: Upload the front of your ID"),*/

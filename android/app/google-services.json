@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165849897031",
+    "project_id": "hire-harmony-415c0",
+    "storage_bucket": "hire-harmony-415c0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165849897031:android:db8039bad1e3c5c6f1b962",
+        "android_client_info": {
+          "package_name": "com.example.hire_harmony"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-uXhBJc0cCp-pJ39uTBCTDlohh8nx9iA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

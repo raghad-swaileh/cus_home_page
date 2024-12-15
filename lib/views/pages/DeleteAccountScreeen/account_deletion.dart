@@ -41,6 +41,7 @@ class AccountDeletionBody extends StatefulWidget {
   const AccountDeletionBody({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AccountDeletionBodyState createState() => _AccountDeletionBodyState();
 }
 
