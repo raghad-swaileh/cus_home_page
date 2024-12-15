@@ -75,7 +75,7 @@ class _buildMenuContainerState extends State<buildMenuContainer> {
 List<Widget> _buildMenuItems(BuildContext context) {
   final menuItems = [
     {'icon': Icons.person, 'text': 'Profile', 'route': const ProfileInfo()},
-    {'icon': Icons.location_city, 'text': 'Manage address', 'route': const ManageLocationPage()},
+    {'icon': Icons.location_city, 'text': 'Manage address', 'route': ManageLocationPage()},
 
     {'icon': Icons.history, 'text': 'Previous Trips', 'route': null},
     {'icon': Icons.settings, 'text': 'Settings', 'route': null},
