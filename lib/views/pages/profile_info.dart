@@ -22,6 +22,7 @@ class ProfileInfo extends StatelessWidget {
       }
       return null;
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching profile data: $e');
       return null;
     }
@@ -62,6 +63,7 @@ class ProfileInfo extends StatelessWidget {
                 ),
               ).then((_) {
                 // إعادة بناء الصفحة عند العودة
+                // ignore: invalid_use_of_protected_member
                 (context as Element).reassemble();
               });
             },
@@ -72,9 +74,9 @@ class ProfileInfo extends StatelessWidget {
         future: fetchProfileData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError || !snapshot.hasData) {
-            return Center(child: Text('Error loading data'));
+            return const Center(child: Text('Error loading data'));
           }
 
           final data = snapshot.data!;

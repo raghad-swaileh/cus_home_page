@@ -60,6 +60,7 @@ class _CustomCarouselIndicatorState extends State<CustomCarouselIndicator> {
                     color: (Theme.of(context).brightness == Brightness.dark
                             ? Colors.white
                             : Theme.of(context).primaryColor)
+                        // ignore: deprecated_member_use
                         .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
             );

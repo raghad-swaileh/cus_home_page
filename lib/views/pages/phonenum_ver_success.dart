@@ -13,7 +13,8 @@ class VerificationSuccessPage extends StatefulWidget {
   });
 
   @override
-  State<VerificationSuccessPage> createState() => _VerificationSuccessPageState();
+  State<VerificationSuccessPage> createState() =>
+      _VerificationSuccessPageState();
 }
 
 class _VerificationSuccessPageState extends State<VerificationSuccessPage> {
@@ -59,7 +60,8 @@ class _VerificationSuccessPageState extends State<VerificationSuccessPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.home_outlined, color: AppColors.orange, size: 35),
+                    Icon(Icons.home_outlined,
+                        color: AppColors.orange, size: 35),
                     const SizedBox(width: 8),
                     Text(
                       'Hire Harmony',

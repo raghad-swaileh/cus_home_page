@@ -38,53 +38,65 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage(
-                  'assets/images/teacher.jpg'), // Replace with your image
-            ),
-            const SizedBox(height: 10),
-            Text(
-              _nameController.text,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              _emailController.text,
-              style: const TextStyle(color: Colors.grey),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.grey,
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  StatItem(label: ' Orders \n Complete', value: '20'),
-                  StatItem(label: ' Support \n Tickets', value: '2'),
-                  StatItem(label: ' Pending \n Requests', value: '5'),
-                ],
+              child: IntrinsicHeight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    const CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage(
+                          'assets/images/teacher.jpg'), // Replace with your image
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      _nameController.text,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      _emailController.text,
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.grey,
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          StatItem(label: ' Orders \n Complete', value: '20'),
+                          StatItem(label: ' Support \n Tickets', value: '2'),
+                          StatItem(label: ' Pending \n Requests', value: '5'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const buildMenuContainer(),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            const buildMenuContainer(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

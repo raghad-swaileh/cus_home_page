@@ -3,6 +3,7 @@ import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/pages/DeleteAccountScreeen/account_deletion.dart';
 import 'package:hire_harmony/views/pages/manage_location_page.dart';
 import 'package:hire_harmony/views/pages/profile_info.dart';
+
 // ignore: camel_case_types
 class buildMenuContainer extends StatefulWidget {
   const buildMenuContainer({super.key});
@@ -13,75 +14,76 @@ class buildMenuContainer extends StatefulWidget {
 
 // ignore: camel_case_types
 class _buildMenuContainerState extends State<buildMenuContainer> {
-    bool isDarkMode = false;
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    decoration: BoxDecoration(
-      color: AppColors.white,
-      borderRadius: BorderRadius.circular(12),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.shade300,
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
-    ),
-    child: Column(
-      children: [
-        Column(
-        children: _buildMenuItems(context),
-        ),
-         ListTile(
-                leading: Icon(  Icons.brightness_6,color:AppColors.orange,),
-                 title: const Text('Theme') ,
-                  onTap: () {
-                setState(() {
-                      isDarkMode = !isDarkMode;
-                      // Change the theme
-                     /* final themeMode =
-                          isDarkMode ? ThemeMode.dark : ThemeMode.light;
-                      MyApp.of(context).setThemeMode(themeMode);*/
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 60),
+          child: Column(
+            children: [
+              Column(
+                children: _buildMenuItems(context),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.brightness_6,
+                  color: AppColors.orange,
+                ),
+                title: const Text('Theme'),
+                onTap: () {
+                  setState(() {
+                    isDarkMode = !isDarkMode;
+                  });
+                },
+                trailing: Switch(
+                  value: isDarkMode,
+                  onChanged: (value) {
+                    setState(() {
+                      isDarkMode = value;
                     });
                   },
-                  trailing: Switch(
-                    value: isDarkMode,
-                    onChanged: (value) {
-                      setState(() {
-                        isDarkMode = value;
-                       /* final themeMode =
-                            isDarkMode ? ThemeMode.dark : ThemeMode.light;
-                        MyApp.of(context).setThemeMode(themeMode);*/
-                      });
-                    },
-                  
-            ),
-         ),
-      ],
-      
-          
-    
-    ),
-  
-  );
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
-
 
 List<Widget> _buildMenuItems(BuildContext context) {
   final menuItems = [
     {'icon': Icons.person, 'text': 'Profile', 'route': const ProfileInfo()},
-    {'icon': Icons.location_city, 'text': 'Manage address', 'route': ManageLocationPage()},
-
+    {
+      'icon': Icons.location_city,
+      'text': 'Manage address',
+      'route': const ManageLocationPage()
+    },
     {'icon': Icons.history, 'text': 'Previous Trips', 'route': null},
     {'icon': Icons.settings, 'text': 'Settings', 'route': null},
-    {'icon': Icons.info, 'text': 'Delete Account', 'route': const AccountDeletionScreen()},
+    {
+      'icon': Icons.info,
+      'text': 'Delete Account',
+      'route': const AccountDeletionScreen()
+    },
     {'icon': Icons.logout, 'text': 'Logout', 'route': null},
-
   ];
 
   return menuItems

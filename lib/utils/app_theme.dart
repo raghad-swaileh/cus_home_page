@@ -66,6 +66,7 @@ class AppTheme {
     );
   }
 
+  // ignore: unused_element
   static InputDecorationTheme _inputDecorationTheme(Color fillColor) {
     return InputDecorationTheme(
       filled: true,

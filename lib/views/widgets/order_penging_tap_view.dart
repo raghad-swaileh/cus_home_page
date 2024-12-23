@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 import 'package:hire_harmony/views/widgets/order_tile.dart';
 
-class OrderPengingTapView extends StatelessWidget {
-  const OrderPengingTapView({super.key});
+class OrderStatusTapView extends StatelessWidget {
+  const OrderStatusTapView({super.key});
 
   @override
   Widget build(BuildContext context) {

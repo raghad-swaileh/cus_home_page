@@ -5,10 +5,9 @@ import 'package:hire_harmony/views/pages/custom_buttom_navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,11 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      
       theme: AppTheme.lightTheme(),
       darkTheme: AppTheme.darkTheme(),
-
-      home:const  CustomButtomNavbar(),
+      home: const CustomButtomNavbar(),
       /*const EmpSignUp(stepText: "Step 1: Upload the front of your ID"),*/
       /* const VerificationSuccessPage(
       /*  notificationTitle:'Phone Number Verification Successful',
