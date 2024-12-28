@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/custom_buttom_navbar.dart';
+import 'package:hire_harmony/views/pages/view_profile_emp.dart';
 
 class SearchAndFilter extends StatelessWidget {
   SearchAndFilter({super.key});
@@ -41,7 +43,7 @@ class SearchAndFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(100.0),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
@@ -54,11 +56,14 @@ class SearchAndFilter extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_back, color: AppColors.navy),
-                    onPressed: (
-                    
-
-                    ) {
-                      // Handle back button
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CustomButtomNavbar(),
+                        ),
+                        (Route<dynamic> route) => false, // do not go back
+                      );
                     },
                   ),
                   Expanded(
@@ -193,20 +198,19 @@ class SearchAndFilter extends StatelessWidget {
                                 CircleAvatar(
                                   radius: 25,
                                   backgroundImage: AssetImage(service['image']),
-                                  
-                                  
                                 ),
-                                const SizedBox(width: 8,),
-                                 Text(
-                              service['name'],
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  service['name'],
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ],
                             ),
-                           
                             Row(
                               children: [
                                 const Icon(Icons.star,
@@ -281,7 +285,15 @@ class SearchAndFilter extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(AppColors.orange),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ViewProfileEmp(), // استدعاء صفحة المراجعات الكاملة
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'veiw profile',
                                 style: TextStyle(

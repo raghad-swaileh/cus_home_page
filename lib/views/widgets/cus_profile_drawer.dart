@@ -48,9 +48,14 @@ class ProfileDrawer extends StatelessWidget {
           _buildMenuItem(Icons.phone, "Contact Us", () {
             // Action for contact us
           }),
-          _buildMenuItem(Icons.logout, "Logout", () {
-            // Action for logout
-          }),
+          _buildMenuItem(
+            Icons.logout,
+            "Logout",
+            () {// هاد القوس زيادة يا ملوكة
+              // async {
+              //             await authCubit.signOut();
+            },
+          ),
         ],
       ),
     );
